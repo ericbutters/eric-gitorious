@@ -81,7 +81,7 @@ module Gitorious
 
       def configuration
         if @configuration.empty?
-          query_url = "/#{@project_name}/#{@repository_name}/config?username=#@user_name"
+          query_url = "/git/#{@project_name}/#{@repository_name}/config?username=#@user_name"
           # $stderr.puts "Querying #{query_url}" if $DEBUG
           resp = connection.get(query_url)
           # $stderr.puts resp
@@ -108,7 +108,7 @@ module Gitorious
 
       # Returns an actual URI object
       def writable_by_query_uri
-        path = "/#{@project_name}/#{@repository_name}/writable_by"
+        path = "/git/#{@project_name}/#{@repository_name}/writable_by"
         query = "username=#{@user_name}"
         host = GitoriousConfig["gitorious_client_host"]
         _port = GitoriousConfig["gitorious_client_port"]
